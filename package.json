@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "typescript": "2.8.3"
+  },
+  "name": "practice",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JasonKaz/practice.git",
+  "author": "Jason Kaczmarsky <jkaczmarsky@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
