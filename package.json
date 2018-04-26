@@ -1,12 +1,18 @@
 {
-  "dependencies": {
-    "typescript": "2.8.3"
-  },
+  "dependencies": {},
   "name": "practice",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/JasonKaz/practice.git",
   "author": "Jason Kaczmarsky <jkaczmarsky@gmail.com>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "tslint": "5.9.1",
+    "typescript": "2.8.3"
+  },
+  "scripts": {
+    "lint": "tslint -c tslint.json -p tsconfig.json -t stylish",
+    "build": "tsc -p tsconfig.json"
+  }
 }
