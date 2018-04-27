@@ -5,7 +5,10 @@
     ],
     "jsRules": {},
     "rules": {
-        "linebreak-style": false
+        "linebreak-style": false,
+        "no-null-keyword": false,
+        "member-ordering": false,
+        "max-classes-per-file": false
     },
     "rulesDirectory": []
 }
