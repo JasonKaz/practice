@@ -3,12 +3,11 @@
     "target": "es5",
     "module": "commonjs",
     "allowJs": false,
-    "rootDir": "./src",
-    "outDir": "./dist",
+    "outDir": "../dist/tests",
     "strict": true,
     "esModuleInterop": true,
     "typeRoots": ["@types"]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["./specs/**/*.ts"],
   "exclude": ["node_modules", "dist"]
 }

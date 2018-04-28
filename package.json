@@ -8,14 +8,18 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
+    "@types/jasmine": "^2.8.6",
     "gulp": "3.9.1",
     "gulp-cli": "2.0.1",
+    "jasmine": "^3.1.0",
     "tslint": "5.9.1",
     "typescript": "2.8.3"
   },
   "scripts": {
     "start": "gulp watch",
     "lint": "tslint -c tslint.json -p tsconfig.json -t stylish",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "test":
+      "tsc -p spec/tsconfig.json && jasmine --config=spec/support/jasmine.json"
   }
 }
