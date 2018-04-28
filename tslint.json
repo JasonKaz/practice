@@ -1,14 +1,13 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:all"
-    ],
-    "jsRules": {},
-    "rules": {
-        "linebreak-style": false,
-        "no-null-keyword": false,
-        "member-ordering": false,
-        "max-classes-per-file": false
-    },
-    "rulesDirectory": []
+  "defaultSeverity": "error",
+  "extends": ["tslint:all"],
+  "jsRules": {},
+  "rules": {
+    "linebreak-style": false,
+    "no-null-keyword": false,
+    "member-ordering": false,
+    "max-classes-per-file": false,
+    "no-inferrable-types": false
+  },
+  "rulesDirectory": []
 }

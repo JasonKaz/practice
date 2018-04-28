@@ -10,7 +10,7 @@ class SinglyLinkedListNode<T> {
 class SinglyLinkedList<T> {
   public head: SinglyLinkedListNode<T> | null = null;
   public tail: SinglyLinkedListNode<T> | null = null;
-  public count = 0;
+  public count: number = 0;
 
   private handleZero(): void {
     if (this.count <= 0) {
@@ -21,7 +21,7 @@ class SinglyLinkedList<T> {
   }
 
   public addFirst(value: T): void {
-    const n = new SinglyLinkedListNode(value);
+    const n: SinglyLinkedListNode<T> = new SinglyLinkedListNode(value);
     const currentHead: SinglyLinkedListNode<T> | null = this.head;
 
     this.head = n;
@@ -64,12 +64,12 @@ class SinglyLinkedList<T> {
 
   public removeLast(): void {
     if (this.count !== 0) {
-      let current = this.head;
+      let current: null | SinglyLinkedListNode<T> = this.head;
       while (current !== null && current.next !== this.tail) {
         current = current.next;
       }
 
-      current.next = null;
+      (current as SinglyLinkedListNode<T>).next = null;
       this.tail = current;
 
       this.count -= 1;
@@ -79,31 +79,37 @@ class SinglyLinkedList<T> {
   }
 
   public removeValue(value: T): void {
-    if (this.count === 0) {
-      return;
-    }
+    if (this.count !== 0) {
+      let current: null | SinglyLinkedListNode<T> = this.head;
+      let previous: null | SinglyLinkedListNode<T> = null;
+      let idx: number = 0;
 
-    if (this.head.value === value) {
-      return this.removeFirst();
-    }
+      while (current !== null) {
+        if (current.value === value) {
+          if (previous === null) {
+            // Value is at head
+            this.head = current.next;
+          } else {
+            if (idx === this.count - 1) {
+              // Value is at tail
+              previous.next = null;
+              this.tail = previous;
+            } else {
+              // Value is in the middle
+              previous.next = current.next;
+            }
+          }
 
-    if (this.tail.value === value) {
-      return this.removeLast();
-    }
+          this.count -= 1;
+          break;
+        }
 
-    var current = this.head;
-    var previous = null;
-    while (current !== null) {
-      if (current.value === value) {
-        previous.next = current.next;
-        this.count -= 1;
-        break;
+        previous = current;
+        current = current.next;
+        idx++;
       }
 
-      previous = current;
-      current = current.next;
+      this.handleZero();
     }
-
-    this.handleZero();
   }
 }
