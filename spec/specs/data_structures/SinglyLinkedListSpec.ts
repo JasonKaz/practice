@@ -63,4 +63,84 @@ describe("SinglyLinkedList", () => {
     expect(n4.value).toEqual(3);
     expect(t.value).toEqual(4);
   });
+
+  it("removeFirst works", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+    ll.addLast(2);
+    ll.addLast(3);
+
+    ll.removeFirst();
+
+    const h: SinglyLinkedListNode<number> = ll.head as SinglyLinkedListNode<number>;
+    const t: SinglyLinkedListNode<number> = ll.tail as SinglyLinkedListNode<number>;
+
+    expect(ll.count).toEqual(2);
+    expect(h.value).toEqual(2);
+    expect(t.value).toEqual(3);
+  });
+
+  it("removeLast works", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+    ll.addLast(2);
+    ll.addLast(3);
+
+    ll.removeLast();
+
+    const h: SinglyLinkedListNode<number> = ll.head as SinglyLinkedListNode<number>;
+    const t: SinglyLinkedListNode<number> = ll.tail as SinglyLinkedListNode<number>;
+
+    expect(ll.count).toEqual(2);
+    expect(h.value).toEqual(1);
+    expect(t.value).toEqual(2);
+    expect(t.next).toEqual(null);
+  });
+
+  it("removeValue works at head", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+    ll.addLast(2);
+    ll.addLast(3);
+
+    ll.removeValue(1);
+
+    const h: SinglyLinkedListNode<number> = ll.head as SinglyLinkedListNode<number>;
+    const t: SinglyLinkedListNode<number> = ll.tail as SinglyLinkedListNode<number>;
+
+    expect(ll.count).toEqual(2);
+    expect(h.value).toEqual(2);
+  });
+
+  it("removeValue works in middle", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+    ll.addLast(2);
+    ll.addLast(3);
+
+    ll.removeValue(2);
+
+    const h: SinglyLinkedListNode<number> = ll.head as SinglyLinkedListNode<number>;
+    const t: SinglyLinkedListNode<number> = ll.tail as SinglyLinkedListNode<number>;
+
+    expect(ll.count).toEqual(2);
+    expect(h.value).toEqual(1);
+    expect(t.value).toEqual(3);
+  });
+
+  it("removeValue works at tail", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+    ll.addLast(2);
+    ll.addLast(3);
+
+    ll.removeValue(3);
+
+    const h: SinglyLinkedListNode<number> = ll.head as SinglyLinkedListNode<number>;
+    const t: SinglyLinkedListNode<number> = ll.tail as SinglyLinkedListNode<number>;
+
+    expect(ll.count).toEqual(2);
+    expect(h.value).toEqual(1);
+    expect(t.value).toEqual(2);
+  });
 });

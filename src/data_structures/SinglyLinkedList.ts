@@ -1,4 +1,6 @@
-class SinglyLinkedListNode<T> {
+type SimplePrimitives = string | number;
+
+class SinglyLinkedListNode<T extends SimplePrimitives> {
   public value: T;
   public next: SinglyLinkedListNode<T> | null = null;
 
@@ -7,11 +9,14 @@ class SinglyLinkedListNode<T> {
   }
 }
 
-class SinglyLinkedList<T> {
+class SinglyLinkedList<T extends SimplePrimitives> {
   public head: SinglyLinkedListNode<T> | null = null;
   public tail: SinglyLinkedListNode<T> | null = null;
   public count: number = 0;
 
+  /**
+   * Handles resetting the head and tail nodes when the count = 0
+   */
   private handleZero(): void {
     if (this.count <= 0) {
       this.head = null;
@@ -20,6 +25,10 @@ class SinglyLinkedList<T> {
     }
   }
 
+  /**
+   * Adds a value to the beginning of the list
+   * @param value The value to add
+   */
   public addFirst(value: T): void {
     const n: SinglyLinkedListNode<T> = new SinglyLinkedListNode(value);
     const currentHead: SinglyLinkedListNode<T> | null = this.head;
@@ -34,6 +43,10 @@ class SinglyLinkedList<T> {
     }
   }
 
+  /**
+   * Adds a value to the end of the list
+   * @param value The value to add
+   */
   public addLast(value: T): void {
     const n: SinglyLinkedListNode<T> = new SinglyLinkedListNode(value);
     const currentTail: SinglyLinkedListNode<T> | null = this.tail;
@@ -51,6 +64,9 @@ class SinglyLinkedList<T> {
     }
   }
 
+  /**
+   * Removes the first item in the list
+   */
   public removeFirst(): void {
     if (this.count !== 0) {
       if (this.head !== null) {
@@ -62,6 +78,9 @@ class SinglyLinkedList<T> {
     }
   }
 
+  /**
+   * Removes the last item in the list
+   */
   public removeLast(): void {
     if (this.count !== 0) {
       let current: null | SinglyLinkedListNode<T> = this.head;
@@ -78,6 +97,10 @@ class SinglyLinkedList<T> {
     }
   }
 
+  /**
+   * Removes the first instance of the value in the list
+   * @param value The value to remove
+   */
   public removeValue(value: T): void {
     if (this.count !== 0) {
       let current: null | SinglyLinkedListNode<T> = this.head;
