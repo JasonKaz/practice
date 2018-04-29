@@ -80,6 +80,23 @@ describe("SinglyLinkedList", () => {
     expect(t.value).toEqual(3);
   });
 
+  it("removeFirst handles an empty list", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+    ll.addLast(2);
+
+    ll.removeFirst();
+    ll.removeFirst();
+
+    expect(ll.head).toEqual(null);
+    expect(ll.tail).toEqual(null);
+    expect(ll.count).toEqual(0);
+
+    ll.removeFirst();
+
+    expect(ll.count).toEqual(0);
+  });
+
   it("removeLast works", () => {
     const ll: SinglyLinkedList<number> = new SinglyLinkedList();
     ll.addLast(1);
@@ -95,6 +112,23 @@ describe("SinglyLinkedList", () => {
     expect(h.value).toEqual(1);
     expect(t.value).toEqual(2);
     expect(t.next).toEqual(null);
+  });
+
+  it("removeLast handles an empty list", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+    ll.addLast(2);
+
+    ll.removeLast();
+    ll.removeLast();
+
+    expect(ll.head).toEqual(null);
+    expect(ll.tail).toEqual(null);
+    expect(ll.count).toEqual(0);
+
+    ll.removeLast();
+
+    expect(ll.count).toEqual(0);
   });
 
   it("removeValue works at head", () => {
@@ -142,5 +176,20 @@ describe("SinglyLinkedList", () => {
     expect(ll.count).toEqual(2);
     expect(h.value).toEqual(1);
     expect(t.value).toEqual(2);
+  });
+
+  it("removeValue handles an empty list", () => {
+    const ll: SinglyLinkedList<number> = new SinglyLinkedList();
+    ll.addLast(1);
+
+    ll.removeValue(1);
+
+    expect(ll.head).toEqual(null);
+    expect(ll.tail).toEqual(null);
+    expect(ll.count).toEqual(0);
+
+    ll.removeValue(1);
+
+    expect(ll.count).toEqual(0);
   });
 });

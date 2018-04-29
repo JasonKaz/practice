@@ -1,6 +1,4 @@
-type SimplePrimitives = string | number;
-
-class SinglyLinkedListNode<T extends SimplePrimitives> {
+class SinglyLinkedListNode<T> {
   public value: T;
   public next: SinglyLinkedListNode<T> | null = null;
 
@@ -9,7 +7,7 @@ class SinglyLinkedListNode<T extends SimplePrimitives> {
   }
 }
 
-class SinglyLinkedList<T extends SimplePrimitives> {
+class SinglyLinkedList<T> {
   public head: SinglyLinkedListNode<T> | null = null;
   public tail: SinglyLinkedListNode<T> | null = null;
   public count: number = 0;
@@ -88,7 +86,9 @@ class SinglyLinkedList<T extends SimplePrimitives> {
         current = current.next;
       }
 
-      (current as SinglyLinkedListNode<T>).next = null;
+      if (current !== null) {
+        current.next = null;
+      }
       this.tail = current;
 
       this.count -= 1;
