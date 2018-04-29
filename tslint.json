@@ -10,7 +10,8 @@
     "no-inferrable-types": false,
     "ordered-imports": false,
     "newline-per-chained-call": false,
-    "trailing-comma": false
+    "trailing-comma": false,
+    "no-unused-expression": false
   },
   "rulesDirectory": []
 }
