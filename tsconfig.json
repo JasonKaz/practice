@@ -7,8 +7,9 @@
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
-    "typeRoots": ["@types"]
+    "typeRoots": ["@types"],
+    "jsx": "react"
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist"]
 }

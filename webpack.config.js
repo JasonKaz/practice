@@ -4,7 +4,7 @@ const copyWebpack = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   watch: true,
   output: {
     filename: "bundle.js",
@@ -13,14 +13,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: [{ loader: "ts-loader" }],
-        exclude: /node_modules/,
+        test: /\.tsx?$/,
+        use: [{ loader: "awesome-typescript-loader" }],
+      },
+      {
+        test: /\.js$/,
+        use: [{ loader: "source-map-loader" }],
+        enforce: "pre",
       },
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".tsx", ".js"],
   },
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
@@ -33,12 +37,9 @@ module.exports = {
       poll: false,
     },
   },
-  plugins: [
-    copyWebpack([
-      {
-        from: "./src/static/index.html",
-        to: "./",
-      },
-    ]),
-  ],
+  plugins: [copyWebpack(["./src/static/index.html", "./node_modules/react/umd/react.development.js", "./node_modules/react-dom/umd/react-dom.development.js"])],
+  externals: {
+    react: "React",
+    "react-dom": "ReactDOM",
+  },
 };
