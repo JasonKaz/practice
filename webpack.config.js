@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const copyWebpack = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -20,13 +21,10 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".js"],
-    alias: {
-      "@": path.resolve("src"),
-    },
   },
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
-    hot: true,
+    hot: false,
     port: 3000,
     compress: true,
     inline: true,
@@ -35,5 +33,12 @@ module.exports = {
       poll: false,
     },
   },
-  plugins: [new webpack.NamedModulesPlugin(), new webpack.HotModuleReplacementPlugin()],
+  plugins: [
+    copyWebpack([
+      {
+        from: "./src/static/index.html",
+        to: "./",
+      },
+    ]),
+  ],
 };
