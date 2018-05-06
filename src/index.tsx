@@ -1,4 +1,11 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-ReactDOM.render(<div>Content TBD</div>, document.getElementById("app"));
+import { SpecList } from "./components/SpecList";
+
+ReactDOM.render(
+  <div>
+    <SpecList />
+  </div>,
+  document.getElementById("app")
+);

@@ -11,6 +11,14 @@ app.get("/", (req, resp) => {
   resp.sendFile(path.resolve(__dirname, "www/index.html"));
 });
 
+app.get("/specs", (req, resp) => {
+  const rrd = require("recursive-readdir");
+  const specsDir = path.resolve(__dirname, "tests/spec/specs");
+  rrd(specsDir, (err, files) => {
+    resp.json(files);
+  });
+});
+
 app.get("/run-test/:spec", (req, resp) => {
   const Jasmine = require("jasmine");
   const jasmine = new Jasmine();
