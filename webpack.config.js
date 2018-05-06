@@ -1,13 +1,14 @@
 const path = require("path");
 const webpack = require("webpack");
 const copyWebpack = require("copy-webpack-plugin");
+const cleanWebpack = require("clean-webpack-plugin");
 
 module.exports = {
   mode: "development",
   entry: "./src/index.tsx",
   watch: true,
   output: {
-    filename: "bundle.js",
+    filename: "www/bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
@@ -37,7 +38,15 @@ module.exports = {
       poll: false,
     },
   },
-  plugins: [copyWebpack(["./src/static/index.html", "./node_modules/react/umd/react.development.js", "./node_modules/react-dom/umd/react-dom.development.js"])],
+  plugins: [
+    new cleanWebpack(["dist"]),
+    copyWebpack([
+      "./src/app.js",
+      { from: "./src/static/index.html", to: "www" },
+      { from: "./node_modules/react/umd/react.development.js", to: "www" },
+      { from: "./node_modules/react-dom/umd/react-dom.development.js", to: "www" },
+    ]),
+  ],
   externals: {
     react: "React",
     "react-dom": "ReactDOM",
