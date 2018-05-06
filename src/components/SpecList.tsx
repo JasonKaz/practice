@@ -17,7 +17,7 @@ class SpecList extends React.Component {
 
     SpecList.getSpecs().then((d: string[]) => {
       this.setState({
-        specFiles: d.map((f: string) => <SpecItem path={f} />),
+        specFiles: d.map((f: string, idx: number) => <SpecItem key={idx} path={f} />),
       });
     });
   }

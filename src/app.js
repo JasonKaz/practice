@@ -1,8 +1,11 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
 
 const app = express();
+
+const findSpec = name => {
+  return path.resolve(__dirname, "tests/spec/specs/data_structures/", name + ".js");
+};
 
 app.set("port", 3000);
 app.use(express.static(path.resolve(__dirname, "www")));
@@ -19,11 +22,16 @@ app.get("/specs", (req, resp) => {
   });
 });
 
+app.get("/spec-details/:spec", (req, resp) => {
+  const file = findSpec(req.params.spec);
+  resp.sendFile(file);
+});
+
 app.get("/run-test/:spec", (req, resp) => {
   const Jasmine = require("jasmine");
   const jasmine = new Jasmine();
 
-  const file = path.resolve(__dirname, "tests/spec/specs/data_structures/", req.params.spec + ".js");
+  const file = findSpec(req.params.spec);
   //const file = `specs/data_structures/${req.params.spec}.js`;
   const config = {
     spec_dir: path.resolve(__dirname, "tests/spec"),
@@ -33,7 +41,6 @@ app.get("/run-test/:spec", (req, resp) => {
   };
 
   const ret = {
-    src: fs.readFileSync(file),
     status: "",
     reason: "",
     config: {},

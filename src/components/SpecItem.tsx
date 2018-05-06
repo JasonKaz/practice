@@ -42,6 +42,10 @@ class SpecItem extends React.Component {
     fetch(`/run-test/${name}`);
   }
 
+  public static getSpecDetails(name: string): void {
+    fetch(`/spec-details/${name}`);
+  }
+
   /**
    * Renders the component
    */
@@ -49,7 +53,7 @@ class SpecItem extends React.Component {
     return (
       <li
         onClick={() => {
-          SpecItem.runSpec(this.state.name);
+          SpecItem.getSpecDetails(this.state.name);
         }}
       >
         {this.state.name}
