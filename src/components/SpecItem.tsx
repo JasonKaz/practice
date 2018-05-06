@@ -18,7 +18,7 @@ interface ISpecItemState {
 /**
  * Class that lists a single spec that can run
  */
-class SpecItem extends React.Component {
+class SpecItem extends React.Component<ISpecItemProps, ISpecItemState> {
   public constructor(props: ISpecItemProps) {
     super(props);
 

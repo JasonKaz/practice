@@ -5,13 +5,13 @@ import { SpecItem } from "./SpecItem";
  * State for the SpecList class
  */
 interface ISpecListState {
-  specFiles: SpecItem[];
+  specFiles: JSX.Element[];
 }
 
 /**
  * Class that lists the specs available to run
  */
-class SpecList extends React.Component {
+class SpecList extends React.Component<{}, ISpecListState> {
   private constructor(props: {}) {
     super(props);
 
