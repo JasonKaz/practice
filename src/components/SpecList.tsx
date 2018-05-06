@@ -1,10 +1,11 @@
 import * as React from "react";
+import { SpecItem } from "./SpecItem";
 
 /**
  * State for the SpecList class
  */
 interface ISpecListState {
-  specFiles: string[];
+  specFiles: SpecItem[];
 }
 
 /**
@@ -15,7 +16,9 @@ class SpecList extends React.Component {
     super(props);
 
     SpecList.getSpecs().then((d: string[]) => {
-      this.setState({ specFiles: d });
+      this.setState({
+        specFiles: d.map((f: string) => <SpecItem path={f} />),
+      });
     });
   }
 
@@ -37,7 +40,7 @@ class SpecList extends React.Component {
    * Renders the component
    */
   public render(): React.ReactNode {
-    return <ul>{this.state.specFiles.map((x: string, idx: number) => <li key={idx}>{x}</li>)}</ul>;
+    return <ul>{this.state.specFiles}</ul>;
   }
 }
 
