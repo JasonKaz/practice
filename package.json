@@ -28,6 +28,7 @@
   },
   "scripts": {
     "start": "webpack",
+    "serve": "tsc -p spec/tsconfig.json && node ./dist/app.js",
     "lint": "tslint -c tslint.json -p tsconfig.json -t stylish",
     "build": "tsc -p tsconfig.json",
     "test": "tsc -p spec/tsconfig.json && jasmine --config=spec/support/jasmine.json"

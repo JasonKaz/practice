@@ -45,6 +45,7 @@ module.exports = {
       { from: "./src/static/index.html", to: "www" },
       { from: "./node_modules/react/umd/react.development.js", to: "www" },
       { from: "./node_modules/react-dom/umd/react-dom.development.js", to: "www" },
+      { from: "./spec/support/jasmine.json", to: "tests/" },
     ]),
   ],
   externals: {
