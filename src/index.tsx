@@ -3,9 +3,4 @@ import * as ReactDOM from "react-dom";
 
 import { SpecList } from "./components/SpecList";
 
-ReactDOM.render(
-  <div>
-    <SpecList />
-  </div>,
-  document.getElementById("app")
-);
+ReactDOM.render(<SpecList />, document.getElementById("app"));

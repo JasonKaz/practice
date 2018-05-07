@@ -2,13 +2,17 @@ const path = require("path");
 const webpack = require("webpack");
 const copyWebpack = require("copy-webpack-plugin");
 const cleanWebpack = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.tsx",
+  entry: {
+    main: "./src/index.tsx",
+    style: "./src/css/app.scss",
+  },
   watch: true,
   output: {
-    filename: "www/bundle.js",
+    filename: "www/[name].js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
@@ -22,10 +26,20 @@ module.exports = {
         use: [{ loader: "source-map-loader" }],
         enforce: "pre",
       },
+      {
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+          },
+          "sass-loader",
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: [".ts", ".tsx", ".js", ".scss"],
   },
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
@@ -47,6 +61,7 @@ module.exports = {
       { from: "./node_modules/react-dom/umd/react-dom.development.js", to: "www" },
       { from: "./spec/support/jasmine.json", to: "tests/" },
     ]),
+    new MiniCssExtractPlugin({ filename: "www/app.css" }),
   ],
   externals: {
     react: "React",
