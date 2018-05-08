@@ -19,11 +19,13 @@
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
     "awesome-typescript-loader": "^5.0.0",
+    "bluebird": "^3.5.1",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "jasmine": "^3.1.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.9.0",
+    "rimraf": "^2.6.2",
     "sass-loader": "^7.0.1",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
@@ -34,9 +36,9 @@
   },
   "scripts": {
     "start": "webpack",
-    "serve": "tsc -p spec/tsconfig.json && node ./dist/app.js",
+    "serve": "node build/serve.js",
     "lint": "tslint -c tslint.json -p tsconfig.json -t stylish",
     "build": "tsc -p tsconfig.json",
-    "test": "tsc -p spec/tsconfig.json && jasmine --config=spec/support/jasmine.json"
+    "test": "tsc -p src/www/spec/tsconfig.json && jasmine --config=src/www/spec/support/jasmine.json"
   }
 }

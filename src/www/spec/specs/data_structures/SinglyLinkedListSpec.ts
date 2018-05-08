@@ -2,7 +2,7 @@
 
 /* tslint:disable:no-magic-numbers */
 
-import { SinglyLinkedList, SinglyLinkedListNode } from "../../../src/data_structures/SinglyLinkedList";
+import { SinglyLinkedList, SinglyLinkedListNode } from "../../../data_structures/SinglyLinkedList";
 
 describe("SinglyLinkedList", () => {
   it("Adds one item", () => {

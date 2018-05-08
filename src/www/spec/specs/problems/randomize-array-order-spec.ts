@@ -1,6 +1,6 @@
 /// <reference types="@types/jasmine" />
 
-import { randomizeArrayOrder, randomizeArrayOrderInPlace } from "../../../src/problems/randomize-array-order";
+import { randomizeArrayOrder, randomizeArrayOrderInPlace } from "../../../problems/randomize-array-order";
 import * as helpers from "../../helpers/";
 
 /* tslint:disable:no-magic-numbers */

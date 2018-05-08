@@ -2,7 +2,7 @@
 
 /* tslint:disable:max-line-length */
 
-import { reverseStringIter, reverseStringIter2, reverseStringRecursive } from "../../../src/problems/reverse-string";
+import { reverseStringIter, reverseStringIter2, reverseStringRecursive } from "../../../problems/reverse-string";
 
 const simpleTest: string = "abc";
 const simpleTestExpected: string = "cba";

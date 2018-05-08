@@ -2,7 +2,7 @@
 
 /* tslint:disable:no-magic-numbers */
 
-import { Queue } from "../../../src/data_structures/Queue";
+import { Queue } from "../../../data_structures/Queue";
 
 describe("Queue", () => {
   it("Adds to beginning", () => {

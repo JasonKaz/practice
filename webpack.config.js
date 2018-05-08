@@ -7,8 +7,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "development",
   entry: {
-    main: "./src/index.tsx",
-    style: "./src/css/app.scss",
+    main: "./src/www/index.tsx",
   },
   watch: true,
   output: {
@@ -53,13 +52,12 @@ module.exports = {
     },
   },
   plugins: [
-    new cleanWebpack(["dist"]),
+    new cleanWebpack(["dist/www"]),
     copyWebpack([
-      "./src/app.js",
-      { from: "./src/static/index.html", to: "www" },
+      { from: "./src/www/static/index.html", to: "www" },
       { from: "./node_modules/react/umd/react.development.js", to: "www" },
       { from: "./node_modules/react-dom/umd/react-dom.development.js", to: "www" },
-      { from: "./spec/support/jasmine.json", to: "tests/" },
+      //{ from: "./spec/support/jasmine.json", to: "tests/" },
     ]),
     new MiniCssExtractPlugin({ filename: "www/app.css" }),
   ],

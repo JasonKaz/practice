@@ -2,7 +2,7 @@
 
 /* tslint:disable:no-magic-numbers */
 
-import { Stack } from "../../../src/data_structures/Stack";
+import { Stack } from "../../../data_structures/Stack";
 
 describe("Stack", () => {
   it("Adds to end", () => {

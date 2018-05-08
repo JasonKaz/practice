@@ -3,20 +3,23 @@ const path = require("path");
 
 const app = express();
 
+const distRoot = path.resolve(__dirname,"../");
+const wwwRoot = path.resolve(distRoot, "www/");
+
 const findSpec = name => {
-  return path.resolve(__dirname, "tests/spec/specs/data_structures/", name + ".js");
+  return path.resolve(distRoot, "tests/spec/specs/data_structures/", name + ".js");
 };
 
 app.set("port", 3000);
-app.use(express.static(path.resolve(__dirname, "www")));
+app.use(express.static(wwwRoot));
 
 app.get("/", (req, resp) => {
-  resp.sendFile(path.resolve(__dirname, "www/index.html"));
+  resp.sendFile(path.resolve(wwwRoot, "index.html"));
 });
 
 app.get("/specs", (req, resp) => {
   const rrd = require("recursive-readdir");
-  const specsDir = path.resolve(__dirname, "tests/spec/specs");
+  const specsDir = path.resolve(distRoot, "tests/spec/specs");
   rrd(specsDir, (err, files) => {
     resp.json(files);
   });
@@ -34,9 +37,9 @@ app.get("/run-test/:spec", (req, resp) => {
   const file = findSpec(req.params.spec);
   //const file = `specs/data_structures/${req.params.spec}.js`;
   const config = {
-    spec_dir: path.resolve(__dirname, "tests/spec"),
+    spec_dir: path.resolve(distRoot, "tests/spec"),
     spec_files: [file],
-    helpers: [path.resolve(__dirname, "tests/spec/helpers/**/*.js")],
+    helpers: [path.resolve(distRoot, "tests/spec/helpers/**/*.js")],
     random: false,
   };
 

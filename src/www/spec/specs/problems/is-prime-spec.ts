@@ -1,6 +1,6 @@
 /// <reference types="@types/jasmine" />
 
-import { isPrime } from "../../../src/problems/is-prime";
+import { isPrime } from "../../../problems/is-prime";
 
 /* tslint:disable:no-magic-numbers */
 

@@ -1,6 +1,6 @@
 /// <reference types="@types/jasmine" />
 
-import { isSubArrayPrime } from "../../../src/problems/is-sub-array-prime";
+import { isSubArrayPrime } from "../../../problems/is-sub-array-prime";
 
 /* tslint:disable:no-magic-numbers */
 
