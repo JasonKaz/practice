@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "clean-webpack-plugin": "^0.1.19",
     "express": "4.16.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -20,6 +19,7 @@
     "@types/react-dom": "^16.0.5",
     "awesome-typescript-loader": "^5.0.0",
     "bluebird": "^3.5.1",
+    "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "jasmine": "^3.1.0",
