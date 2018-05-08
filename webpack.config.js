@@ -10,6 +10,7 @@ module.exports = {
     main: "./src/www/index.tsx",
   },
   watch: true,
+  devtool: "cheap-source-map",
   output: {
     filename: "www/[name].js",
     path: path.resolve(__dirname, "dist"),

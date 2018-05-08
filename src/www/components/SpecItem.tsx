@@ -5,6 +5,7 @@ import * as React from "react";
  */
 interface ISpecItemProps {
   path: string;
+  onClick: (name: string, path: string) => void;
 }
 
 /**
@@ -29,22 +30,10 @@ class SpecItem extends React.Component<ISpecItemProps, ISpecItemState> {
   /**
    * State for the SpecItem class
    */
-  public state: ISpecItemState = {
+  public readonly state: ISpecItemState = {
     name: "",
     path: "",
   };
-
-  /**
-   * Runs a given spec by it's name
-   * @param name
-   */
-  public static runSpec(name: string): void {
-    fetch(`/run-test/${name}`);
-  }
-
-  public static getSpecDetails(name: string): void {
-    fetch(`/spec-details/${name}`);
-  }
 
   /**
    * Renders the component
@@ -52,9 +41,7 @@ class SpecItem extends React.Component<ISpecItemProps, ISpecItemState> {
   public render(): React.ReactNode {
     return (
       <li
-        onClick={() => {
-          SpecItem.getSpecDetails(this.state.name);
-        }}
+        onClick={() => { this.props.onClick(this.state.name, this.state.path); }}
       >
         {this.state.name}
       </li>

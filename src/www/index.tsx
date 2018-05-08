@@ -2,6 +2,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import "./css/app.scss"; // tslint:disable-line
 
-import { SpecList } from "./components/SpecList";
+import { App } from "./components/App";
 
-ReactDOM.render(<SpecList />, document.getElementById("app"));
+ReactDOM.render(<App />, document.getElementById("app"));
