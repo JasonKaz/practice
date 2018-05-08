@@ -19,10 +19,8 @@ class App extends React.Component<{}, {}> {
     }
 
     private onSpecClick(name: string): void {
-        ApiClient.getSpecDetails(name).then((val: Response) => {
-            val.text().then((t: string) => {
-                this.setState({specCode: t});
-            });
+        ApiClient.getSpecDetails(name).then((t: string) => {
+            this.setState({specCode: t});
         });
     }
 }

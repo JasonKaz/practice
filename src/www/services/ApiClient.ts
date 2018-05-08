@@ -18,8 +18,8 @@ class ApiClient {
      * Gets a specs details
      * @param name
      */
-    public static getSpecDetails(name: string): Promise<Response> {
-        return fetch(`/spec-details/${name}`);
+    public static getSpecDetails(name: string): Promise<string> {
+        return fetch(`/spec-details/${name}`).then((val: Response) => val.text());
     }
 }
 
