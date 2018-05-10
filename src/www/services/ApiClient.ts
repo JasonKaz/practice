@@ -1,3 +1,6 @@
+/**
+ * Class to interact with the server API
+ */
 class ApiClient {
     /**
      * Gets all available specs
@@ -18,7 +21,7 @@ class ApiClient {
      * Gets a specs details
      * @param name
      */
-    public static getSpecDetails(name: string): Promise<string> {
+    public static async getSpecDetails(name: string): Promise<string> {
         return fetch(`/spec-details/${name}`).then((val: Response) => val.text());
     }
 }

@@ -1,7 +1,13 @@
 import { SinglyLinkedList, SinglyLinkedListNode } from "./SinglyLinkedList";
 
+/**
+ * Typescript implementation of a Queue
+ */
 class Queue<T> {
-  private ll: SinglyLinkedList<T> = new SinglyLinkedList();
+  /**
+   * Internal linked list
+   */
+  private readonly ll: SinglyLinkedList<T> = new SinglyLinkedList();
 
   /**
    * Queues a new value

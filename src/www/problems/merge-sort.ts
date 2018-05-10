@@ -1,6 +1,10 @@
 // Implement merge sort
 // Given [4, 5, 1, 3, 2] output [1, 2, 3, 4, 5]
 
+/**
+ * Typescript implementation of the merge sort algorithm
+ * @param ar The array to sort
+ */
 function mergeSort(ar: number[]): number[] {
     if (ar.length <= 1) {
         return ar;
@@ -13,6 +17,11 @@ function mergeSort(ar: number[]): number[] {
     return merge(mergeSort(first), mergeSort(second));
 }
 
+/**
+ * Merges two arrays and sorts them
+ * @param left
+ * @param right
+ */
 function merge(left: number[], right: number[]): number[] {
     const ret: number[] = [];
 

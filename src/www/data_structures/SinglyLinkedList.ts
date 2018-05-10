@@ -1,5 +1,15 @@
+/**
+ * Typescript implementation of a single linked list node
+ */
 class SinglyLinkedListNode<T> {
+  /**
+   * The value within the node
+   */
   public value: T;
+
+  /**
+   * The next node to point to
+   */
   public next: SinglyLinkedListNode<T> | null = null;
 
   public constructor(value: T) {
@@ -7,9 +17,23 @@ class SinglyLinkedListNode<T> {
   }
 }
 
+/**
+ * Typescript implementation of a single linked list
+ */
 class SinglyLinkedList<T> {
+  /**
+   * The head of the list
+   */
   public head: SinglyLinkedListNode<T> | null = null;
+
+  /**
+   * The tail of the list
+   */
   public tail: SinglyLinkedListNode<T> | null = null;
+
+  /**
+   * How many nodes are in the list
+   */
   public count: number = 0;
 
   /**

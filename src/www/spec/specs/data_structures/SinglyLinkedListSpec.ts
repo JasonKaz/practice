@@ -140,7 +140,6 @@ describe("SinglyLinkedList", () => {
     ll.removeValue(1);
 
     const h: SinglyLinkedListNode<number> = ll.head as SinglyLinkedListNode<number>;
-    const t: SinglyLinkedListNode<number> = ll.tail as SinglyLinkedListNode<number>;
 
     expect(ll.count).toEqual(2);
     expect(h.value).toEqual(2);
