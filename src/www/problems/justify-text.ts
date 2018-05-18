@@ -18,7 +18,7 @@ function justifyText(line: string, width: number): string {
     let sentenceWithNewlines: string = "";
 
     if (sentenceParts !== null) {
-      sentenceWithNewlines = sentenceParts.map((x: string) => justifyText(x, width)).join("\n");
+      sentenceWithNewlines = sentenceParts.map((x: string) => justifyText(x, width).trim()).join("\n");
     }
 
     return sentenceWithNewlines;

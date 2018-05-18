@@ -45,6 +45,6 @@ describe("justifyText", () => {
 brown  fox
 jumps over
 the   lazy
-dog.      `);
+dog.`);
   });
 });
