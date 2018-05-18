@@ -54,29 +54,21 @@ function justifyText(line: string, width: number): string {
 
   // Split the sentence by space, maintaining the existing spaces
   const words: string[] = trimmedLine.split(" ");
-  const wordsWithSpaces: string[] = words.map((part: string, i: number) => {
-    // Don't add space to last word
-    if (i + 1 < words.length) {
-      return `${part} `;
-    } else {
-      return part;
-    }
-  });
 
   // Loop through every word and append a new space
   let idx: number = 0;
-  for (let i: number = 0; i < diff; i++) {
-    wordsWithSpaces[idx++] += " ";
+  for (let i: number = 0; i < diff + spaceCount; i++) {
+    words[idx++] += " ";
 
     // If reached end of sentence then loop back around
     // Ignore last word
-    if (idx >= wordsWithSpaces.length - 1) {
+    if (idx >= words.length - 1) {
       idx = 0;
     }
   }
 
   // Combine the parts into the full justified sentence
-  return wordsWithSpaces.join("");
+  return words.join("");
 }
 
 export { justifyText };
