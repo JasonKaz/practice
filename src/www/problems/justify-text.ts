@@ -35,7 +35,7 @@ function justifyText(line: string, width: number): string {
   const extra: number = diff % spaceCount; // How many spaces to append bewteen words in the whole sentence
   const words: string[] = trimmedLine.split(" ");
 
-  // Loop through every word and append a new space, should not loop to
+  // Loop through every word and append a new space, should not loop past end of sentence
   let idx: number = 0;
   for (let i: number = 0; i < extra; i++) {
     words[idx++] += " ";
