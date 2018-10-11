@@ -1,27 +1,26 @@
 // Input: justify("The quick brown fox jumps over the lazy dog.", 52)
 
-function justifyText(line: string, width: number): string {
-  const trimmedLine: string = line.trim();
+/**
+ * Justifies a line of text into a given line length
+ * @param text The line of text to justify
+ * @param lineLength The line length to justify to
+ */
+function justifyText(text: string, lineLength: number): string {
+  const trimmedLine: string = text.trim();
 
   // Direct match, just return
-  if (trimmedLine.length === width) {
+  if (trimmedLine.length === lineLength) {
     return trimmedLine;
   }
 
-  if (trimmedLine.length > width) {
-    // Wrap sentence to newline? No directions given for scenario, making assumptions.
-    // Ugly implementation, will split words to wrap them, can improve
+  if (trimmedLine.length > lineLength) {
+    // Wraps sentence to newline. Ugly implementation, will split words to wrap them, can improve.
 
-    // Split sentence in given width chunks
-    const expr: RegExp = new RegExp(`.{1,${width}}`, "g");
-    const sentenceParts: RegExpMatchArray | null = trimmedLine.match(expr);
-    let sentenceWithNewlines: string = "";
+    // Split sentence in given lineLength chunks
+    const sentenceParts: RegExpMatchArray | null = trimmedLine.match(new RegExp(`.{1,${lineLength}}`, "g"));
 
-    if (sentenceParts !== null) {
-      sentenceWithNewlines = sentenceParts.map((x: string) => justifyText(x, width)).join("\n");
-    }
-
-    return sentenceWithNewlines;
+    // Map over each chunk and apply the justifyText function
+    return sentenceParts !== null ? sentenceParts.map((x: string) => justifyText(x, lineLength)).join("\n") : "";
   }
 
   const spaceCount: number = (trimmedLine.match(/ /g) || []).length;
@@ -30,19 +29,16 @@ function justifyText(line: string, width: number): string {
     return trimmedLine;
   }
 
-  const diff: number = width - trimmedLine.length;
+  const diff: number = lineLength - trimmedLine.length;
   const multiple: number = Math.floor(diff / spaceCount) + 1; // How may spaces to put between each word
-  const extra: number = diff % spaceCount; // How many spaces to append bewteen words in the whole sentence
+  const extra: number = diff % spaceCount; // How many extra spaces needed to reach the necessary length
   const words: string[] = trimmedLine.split(" ");
 
-  // Loop through every word and append a new space, should not loop past end of sentence
-  let idx: number = 0;
-  for (let i: number = 0; i < extra; i++) {
-    words[idx++] += " ";
-  }
+  // Add the number of extra spaces necessary to the end of words
+  const wordsWithExtraSpaces: string[] = words.map((word: string, idx: number) => (idx < extra ? `${word} ` : word));
 
   // Combine the parts by joining with an equal number of space between each word
-  return words.join(new Array(multiple + 1).join(" "));
+  return wordsWithExtraSpaces.join(new Array(multiple + 1).join(" "));
 }
 
 export { justifyText };
